@@ -11,6 +11,14 @@ The following changes have been made for each official Clockwork build.
   * *Contributed by SomeSortOfDuck.*
 * Extended item options capabilities.
   * *Contributed by Insomnia Array.*
+* Headbob has been clamped from 0 to 1.
+  * *Contributed by hungerjohnson.*
+* Added material computation to DrawScreenBlurs().
+  * *Contributed by Chessnut.*
+* Changed schema hook override warning to be clearer.
+  * *Contributed by SomeSortOfDuck.*
+* Added cl_imagebutton.lua
+  * *Contributed by RJ.*
   
 0.9
 -------

@@ -841,7 +841,7 @@ end;
 
 -- Called when the view should be calculated.
 function Clockwork:CalcView(player, origin, angles, fov)
-	local scale = CW_CONVAR_HEADBOBSCALE:GetFloat() or 1;
+	local scale = math.Clamp(CW_CONVAR_HEADBOBSCALE:GetFloat(),0,1) or 1;
 
 	if (self.Client:IsRagdolled()) then
 		local ragdollEntity = self.Client:GetRagdollEntity();
@@ -1366,7 +1366,7 @@ function Clockwork:DrawPlayerVignette()
 		local data = {};
 			data.start = self.Client:GetShootPos();
 			data.endpos = data.start + (self.Client:GetUp() * 512);
-			data.filder = self.Client;
+			data.filter = self.Client;
 		local trace = util.TraceLine(data);
 
 		if (!trace.HitWorld and !trace.HitNonWorld) then
@@ -2423,7 +2423,7 @@ function Clockwork:PlayerAdjustClassModelInfo(class, info) end;
 -- Called when the local player's headbob info should be adjusted.
 function Clockwork:PlayerAdjustHeadbobInfo(info)
 	local bisDrunk = self.player:GetDrunk();
-	local scale = CW_CONVAR_HEADBOBSCALE:GetFloat() or 1;
+	local scale = math.Clamp(CW_CONVAR_HEADBOBSCALE:GetFloat(),0,1) or 1;
 	
 	if (self.Client:IsRunning()) then
 		info.speed = (info.speed * 4) * scale;

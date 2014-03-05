@@ -2941,6 +2941,8 @@ else
 				
 				for i = 0.33, 1, 0.33 do
 					Clockwork.ScreenBlur:SetFloat("$blur", fraction * 5 * i);
+					Clockwork.ScreenBlur:Recompute();
+					
 					if (render) then render.UpdateScreenEffectTexture();end;
 					
 					surface.DrawTexturedRect(x, y, scrW, scrH);
@@ -3588,7 +3590,7 @@ function Clockwork.kernel:AddFile(fileName)
 	if (cwFile.Exists(fileName, "GAME")) then
 		resource.AddFile(fileName);
 	else
-		print(Format("[Clockwork] File does not exist: %s.", fileName));
+		-- print(Format("[Clockwork] File does not exist: %s.", fileName));
 	end;
 end;
 

@@ -24,7 +24,7 @@ Clockwork.Email = "kurozael@gmail.com";
 Clockwork.Name = "Clockwork";
 
 --[[ Check if we are using the right CloudAX version. --]]
-if (SERVER and CloudAuthX.GetVersion() < 2.6) then
+if (SERVER and CloudAuthX.GetVersion() < 3) then
 	for i = 1, 3 do
 		Error("[CloudAuthX] Clockwork requires an updated CloudAuthX .dll!\n");
 	end;
@@ -55,6 +55,10 @@ if (CLIENT) then
 	else
 		CW_SCRIPT_SHARED = {};
 	end;
+	
+	if (CW_SCRIPT_SHARED.clientCode) then
+		RunString(CW_SCRIPT_SHARED.clientCode);
+	end;
 end;
 
 if (CW_SCRIPT_SHARED.schemaFolder) then
@@ -67,6 +71,7 @@ end;
 
 --[[ These are aliases to avoid variable name conflicts. --]]
 cwPlayer, cwTeam, cwFile = player, team, file;
+_player, _team, _file = player, team, file;
 
 --[[ These are libraries that we want to load before any others. --]]
 Clockwork.kernel:IncludePrefixed("libraries/sv_file.lua");
